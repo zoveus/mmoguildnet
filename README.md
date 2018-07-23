@@ -1,2 +1,2 @@
 # mmoguildnet
-Dies ist das Repository zur Webseite {www.mmo-guild.net}
+Dies ist das Repository zur Webseite {www.mmoguild.net}
