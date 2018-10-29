@@ -1,0 +1,31 @@
+{% extends 'dauntless_database/index.html.twig' %}
+
+{% block title %}Behemoths - Dauntless Database{% endblock %}
+
+{% block body %}
+<div class="container">
+  {% for behemoth in behemoths %}  
+	<div class="row behemoth bg-dark">
+    <div class="col-3 behemoth-image"><img class="img-thumbnail" src="/game/dauntless/assets/img/behemoth-{{ behemoth.id }}.jpg"></div>
+    <div class="col behemoth-name">{{ behemoth.name }}</div>
+    {% for val in behemoth.datavalues %}
+      {% if val.type == "element" %}
+        <div class="col-1 behemoth-element"><img class="" src="/game/dauntless/assets/img/element-{{ val.datatypeId }}.png"></div>
+      {% endif %}
+      {% if val.type == 'weakness' %}
+        <div class="col-1 behemoth-weakness"><img class="" src="/game/dauntless/assets/img/element-{{ val.datatypeId }}.png"></div>
+      {% endif %}
+    {% endfor %}
+	</div>
+  <div class="row behemoth-details-wrapper">
+    <div class="col">
+    {% for val in behemoth.datavalues %}
+      <div class="row">
+        <div class="col">{{ val.type }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
