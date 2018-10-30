@@ -59,13 +59,6 @@ class Gamedata
     private $tooltip;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
-    private $image = '0';
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Datavalue", mappedBy="gamedata")
      */
     private $datavalues;
@@ -147,18 +140,4 @@ class Gamedata
 
         return $this;
     }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-
 }

@@ -50,20 +50,36 @@ class DauntlessDatabaseController extends AbstractController
 	    		'datatypeId'=>self::BEHEMOTHID,
 		    ]);
 
-
 		    if(!empty($behemoths))
 		    {
 		    	foreach($behemoths as $key=>$behemoth)
 		    	{
-		    		if(empty($behemoth->getImage())) $behemoth->setImage('game/dauntless/assets/img/behemoth.png');
+		    		$behemoth->image = 'behemoth.png';
+		    		$behemoth->icon = 'behemoth.png';
 		    		$data = $behemoth->getDatavalues();
+		    		$behemoth->element = '';
+		    		$behemoth->weakness = '';
 		    		if(!empty($data))
 				    {
-				    	foreach($data as $type)
+				    	foreach($data as $property)
 				    	{
-
+			    			switch($property->getType())
+			    			{
+			    				case 'element':
+			    						$behemoth->element = $property->getDatatypeId();
+			    					break;
+			    				case 'weakness':
+			    						$behemoth->weakness = $property->getDatatypeId();
+			    					break;
+			    				case 'image':
+			    						$behemoth->image = $property->getValue();
+			    					break;
+			    				case 'icon':
+			    						$behemoth->icon = $property->getValue();
+			    					break;
+			    			}
 				    	}
-				    }
+				    }				    
 		    	}
 		    }
 		}

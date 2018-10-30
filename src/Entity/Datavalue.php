@@ -50,9 +50,9 @@ class Datavalue
     private $type = '0';
 
     /**
-     * @var float|null
+     * @var string|null
      *
-     * @ORM\Column(name="value", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
      */
     private $value = '0';
 
@@ -116,12 +116,12 @@ class Datavalue
         return $this;
     }
 
-    public function getValue(): ?float
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(?float $value): self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
 

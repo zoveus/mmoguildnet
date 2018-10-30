@@ -5,17 +5,21 @@
 {% block body %}
 <div class="container">
   {% for behemoth in behemoths %}  
-	<div class="row behemoth bg-dark">
-    <div class="col-3 behemoth-image"><img class="img-thumbnail" src="/game/dauntless/assets/img/behemoth-{{ behemoth.id }}.jpg"></div>
-    <div class="col behemoth-name">{{ behemoth.name }}</div>
-    {% for val in behemoth.datavalues %}
-      {% if val.type == "element" %}
-        <div class="col-1 behemoth-element"><img class="" src="/game/dauntless/assets/img/element-{{ val.datatypeId }}.png"></div>
-      {% endif %}
-      {% if val.type == 'weakness' %}
-        <div class="col-1 behemoth-weakness"><img class="" src="/game/dauntless/assets/img/element-{{ val.datatypeId }}.png"></div>
-      {% endif %}
-    {% endfor %}
+	<div class="row behemoth bg-dark shadow p-3 mb-2 rounded">
+    <div class="col-1 behemoth-image"><img class="img-fluid" src="/game/dauntless/assets/img/{{ behemoth.icon }}"></div>
+    <div class="col behemoth-name">
+      {{ behemoth.name }}
+      <div class="row">
+        <div class="col">          
+        </div>
+      </div>
+    </div>
+    <div class="col-2 behemoth-element d-flex align-items-center">      
+      {% if behemoth.element %}<i class="fas fa-angle-up fa-2x text-success"></i><img class="img-fluid" src="/game/dauntless/assets/img/element-{{ behemoth.element }}.png">{% else %}none{%endif%}
+    </div>
+    <div class="col-2 behemoth-weakness d-flex align-items-center">      
+      {% if behemoth.weakness %}<i class="fas fa-angle-down fa-2x text-danger"></i><img class="img-fluid" src="/game/dauntless/assets/img/element-{{ behemoth.weakness }}.png">{% else %}none{%endif%}
+    </div>
 	</div>
   <div class="row behemoth-details-wrapper">
     <div class="col">

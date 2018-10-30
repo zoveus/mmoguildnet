@@ -10,11 +10,15 @@ echo @php "%~dp0composer.phar" %*>composer.bat
 
 - um controller etc. anlegen zu können folgendes requirement gemacht:
 composer require doctrine maker
-
 composer require symfony/apache-pack
 
 - Für bootstrap und co wird folgendes packet benötigt
 composer require symfony/webpack-encore-pack
-- yarn installiert
+- yarn muss installiert werden
 - Danach kann man die ganzen CSS Dateien compilieren mit (Kommandozeile)
 yarn encore dev
+
+- DUMP erzeugen
+mysqldump -ummoguild -pmmoguild2018# -h127.0.0.1 mmoguild > "D:\web\xampp\htdocs\dev\backup\mmoguild_20181029.sql"
+- DUMP einspielen
+mysql -u mmoguild --database=mmoguild < "D:\web\xampp\htdocs\dev\backup\mmoguild_20181029.sql"
